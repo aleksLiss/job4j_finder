@@ -1,0 +1,5 @@
+/home/aleksei/java/projects/job4j_finder/target/classes/ru/job4j/finder/Search.class
+/home/aleksei/java/projects/job4j_finder/src/main/java/ru/job4j/finder/Search.java
+/home/aleksei/java/projects/job4j_finder/.git/hooks/pre-push.sample
+/home/aleksei/java/projects/job4j_finder/.git/hooks/pre-applypatch.sample
+/home/aleksei/java/projects/job4j_finder/.idea/misc.xml
