@@ -29,6 +29,7 @@ public class Finder {
     private void visitor(String root, String mask) {
         try {
             String regex = Pattern.compile(mask).pattern();
+            System.out.println(regex);
             Predicate<Path> predicate = (i) -> i.toFile().getName().matches(regex);
             try {
                 VisitorFiles searcher = new VisitorFiles(predicate);
@@ -43,29 +44,9 @@ public class Finder {
     }
 
     private String parseMask(String mask) {
-        StringBuilder regex = new StringBuilder();
-        for (int i = 0; i < mask.length(); i++) {
-            String character = String.valueOf(mask.charAt(i));
-            if ("*".equals(character)) {
-                regex.append(".*");
-                continue;
-            }
-            if ("?".equals(character)) {
-                regex.append(".?");
-                continue;
-            }
-            if (".".equals(character)) {
-                String prev = String.valueOf(mask.charAt(i - 1));
-                if (i > 0 && "\\".equals(prev)) {
-                    regex.append(".");
-                } else {
-                    regex.append("\\.");
-                }
-                continue;
-            }
-            regex.append(character);
-        }
-        return regex.toString();
+        return mask.replace(".", "[.]")
+                .replace("*", ".*")
+                .replace("?", ".");
     }
 
     private void writeToFile(ArgsName argsName) {
